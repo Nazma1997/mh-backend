@@ -145,8 +145,9 @@ export const registerEmployeeUser = async (req: Request, res: Response, next: Ne
             customError.statusCode = 400;
             throw customError;
         }
+        // "positionId", "phoneNumber", "countryName" , "profilePicture", "cv", "unlinkArray", "s3BucketUrl"
 
-        req.body = _.pick(req.body, ["firstName", "lastName", "email", "phoneNumber", "countryName", "positionId", "profilePicture", "cv", "unlinkArray", "s3BucketUrl"]);
+        req.body = _.pick(req.body, ["firstName", "lastName", "email", "positionId", "phoneNumber", "countryName" , "profilePicture", "cv", "unlinkArray", "s3BucketUrl"]);
 
         req.body.employee = true;
         req.body.active = false;
@@ -155,8 +156,8 @@ export const registerEmployeeUser = async (req: Request, res: Response, next: Ne
         const user: any = await createUser(req);
 
         const token = await getToken(user);
-
-        return await successResponseHandler(res, 201, "Employee has been registered successfully!", "details", { _id: user._id });
+        // return await successResponseHandler(res, 201, "Client has been registered successfully!", "token", token);
+        return await successResponseHandler(res, 201, "Client has been registered successfully!", "details", user);
     } catch (err) {
         return next(err);
     }

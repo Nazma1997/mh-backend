@@ -23,7 +23,9 @@ positionRouter.getAsync("/", authenticate, ValidateRequestHandler, getAll);
 positionRouter.getAsync("/list-for-dropdown", ValidateRequestHandler, getAllForDropDown);
 
 //Create and update position
-positionRouter.postAsync("/create", authenticate, PositionAddRequest, ValidateRequestHandler, addInfo);
+
+// authenticate
+positionRouter.postAsync("/create",  PositionAddRequest, ValidateRequestHandler, addInfo);
 positionRouter.putAsync("/update", PositionUpdateRequest, ValidateRequestHandler, updateInfo);
 positionRouter.putAsync("/update-status", PositionUpdateStatusRequest, ValidateRequestHandler, updateStatusInfo);
 
