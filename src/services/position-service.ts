@@ -59,9 +59,9 @@ export const addPositionInfo = async (req: Request) => {
         const input: DocumentDefinition<PositionDocument> = req.body;
 
         //@ts-ignore
-        // const loggedInUserInfo: any = req.user;
+        const loggedInUserInfo: any = req.user;
 
-        // input.createdBy = loggedInUserInfo._id;
+        input.createdBy = loggedInUserInfo._id;
 
         const positionName: any = input.name;
         input.slug = await createNewSlug(positionName);

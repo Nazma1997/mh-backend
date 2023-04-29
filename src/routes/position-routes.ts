@@ -19,13 +19,14 @@ import { PositionUpdateRequest, PositionUpdateStatusRequest } from "../requests/
 const positionRouter = express.Router();
 
 //Reader API
+
 positionRouter.getAsync("/", authenticate, ValidateRequestHandler, getAll);
 positionRouter.getAsync("/list-for-dropdown", ValidateRequestHandler, getAllForDropDown);
 
 //Create and update position
 
-// authenticate
-positionRouter.postAsync("/create",  PositionAddRequest, ValidateRequestHandler, addInfo);
+
+positionRouter.postAsync("/create",authenticate,  PositionAddRequest, ValidateRequestHandler, addInfo);
 positionRouter.putAsync("/update", PositionUpdateRequest, ValidateRequestHandler, updateInfo);
 positionRouter.putAsync("/update-status", PositionUpdateStatusRequest, ValidateRequestHandler, updateStatusInfo);
 

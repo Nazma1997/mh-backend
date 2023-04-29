@@ -30,10 +30,10 @@ export const PositionSchema = new mongoose.Schema(
             type: Boolean,
             default: false
         },
-        // createdBy: {
-        //     type: mongoose.Types.ObjectId,
-        //     required: true,
-        // }
+        createdBy: {
+            type: mongoose.Types.ObjectId,
+            required: true,
+        }
     },
     { timestamps: true }
 );
